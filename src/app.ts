@@ -1,15 +1,26 @@
-const button = document.querySelector('button')!
+class Department {
+  private employees: string[] = []
 
-function add(n1: number, n2: number) {
-  if (n1 + n2 > 0) {
-    return n1 + n2
+  constructor(private readonly id: string, public name: string) {}
+
+  describe() {
+    console.log(`Department (${this.id}: ${this.name})`)
   }
-  return
+
+  addEmployee(employee: string) {
+    this.employees.push(employee)
+  }
+
+  printEmployeeInformation() {
+    console.log(this.employees.length)
+    console.log(this.employees)
+  }
 }
 
-function clickHandler(message: string) {
-  console.log('Clicked! ' + message)
-}
+const accounting = new Department('d1', 'Accounting')
 
-// a comment
-button.addEventListener('click', clickHandler.bind(null, 'You\'re welcome!'))
+accounting.addEmployee('Mike')
+accounting.addEmployee('Lisa')
+
+accounting.describe()
+accounting.printEmployeeInformation()
