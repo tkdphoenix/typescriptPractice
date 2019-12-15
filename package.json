@@ -1,6 +1,6 @@
 {
   "name": "typescriptpractice",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Practicing TypeScript",
   "main": "app.js",
   "scripts": {
