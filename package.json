@@ -1,17 +1,51 @@
 {
   "name": "typescriptpractice",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Practicing TypeScript",
   "main": "app.js",
   "scripts": {
+    "format:eslint": "eslint --ext .js,.html . --fix --ignore-path .gitignore",
+    "format:prettier": "prettier \"**/*.js\" --write --ignore-path .gitignore",
+    "format": "npm run format:eslint && npm run format:prettier",
+    "lint:eslint": "eslint --ext .js,.html . --ignore-path .gitignore",
+    "lint:prettier": "prettier \"**/*.js\" --check --ignore-path .gitignore",
+    "lint": "npm run lint:eslint && npm run lint:prettier",
     "start": "lite-server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "update": "npx npm-check -u"
   },
   "author": "Joel Grissom",
-  "license": "ISC",
+  "license": "UNLICENSED",
   "devDependencies": {
-    "lite-server": "^2.5.4"
+    "lite-server": "^2.5.4",
+    "eslint": "^6.1.0",
+    "@open-wc/eslint-config": "^2.0.0",
+    "@open-wc/prettier-config": "^0.1.10",
+    "husky": "^1.0.0",
+    "lint-staged": "^8.0.0"
   },
-  "dependencies":{},
-  "prettier": "./utils/.prettier.config.js"
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tkdphoenix/typescriptPractice.git"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@open-wc/eslint-config",
+      "eslint-config-prettier"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "prettier": "./utils/prettier.config.js"
 }
